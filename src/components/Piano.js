@@ -1,11 +1,11 @@
 import React from 'react';
 import { Key } from './Key'
 import './Piano.css'
-import { Notes } from '../global/constants'
+import { NOTES } from '../global/constants'
 import _ from 'lodash';
 
 const Piano = () => {
-  const keys = _.map(Notes, (note, index) => {
+  const keys = _.map(NOTES, (note, index) => {
     return (
       <Key 
         key={index}
