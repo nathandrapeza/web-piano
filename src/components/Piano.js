@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Key } from './Key'
 import './Piano.css'
-import { NOTES, VALID_KEYS } from '../global/constants'
+import { KEY_TO_NOTE, NOTES, VALID_KEYS } from '../global/constants'
 import _ from 'lodash';
 
 const Piano = () => {
@@ -16,6 +16,15 @@ const Piano = () => {
       />
     );
   });
+  const audiofiles = _.map(NOTES, (note, index) => {
+    return (
+      <audio 
+        id={note}
+        key={index}
+        src={`../../notes/${note}.mp3`}
+      />
+    )
+  })
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -27,11 +36,15 @@ const Piano = () => {
   }, );
 
   const handleKeyDown = (event) => {
+    if (event.repeat) {
+      return;
+    }
     const key = event.key;
     if (!pressedKeys.includes(key) && VALID_KEYS.includes(key)) {
       setPressedKeys((prevPressedKeys) => [...prevPressedKeys, key]);
     }
-    console.log(`Current pressedKeys: ${pressedKeys}`);
+    playNote(KEY_TO_NOTE[key])
+    console.log(`KeyDown: current pressedKeys: ${pressedKeys}`);
   };
 
   const handleKeyUp = (event) => {
@@ -41,13 +54,24 @@ const Piano = () => {
         prevPressedKeys.filter((pressedKey) => pressedKey !== key)
       );
     }
-    console.log(`Current pressedKeys: ${pressedKeys}`);
+    console.log(`KeyUp: Current pressedKeys: ${pressedKeys}`);
   };
 
+  const playNote = (note) => {
+    if (!_.isEmpty(note)) {
+      const noteAudio = new Audio(document.getElementById(note).src);
+      noteAudio.play();
+    }
+  }
 
   return (
-    <div className="piano">
-      {keys}
+    <div>
+      <div className="piano">
+        {keys}
+      </div>
+      <div>
+        {audiofiles}
+      </div>
     </div>
   );
 }
