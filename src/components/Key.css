@@ -5,7 +5,7 @@
   border: 2px solid black;
 }
 
-.key.pressed, flat-key.pressed {
+.key.pressed, .key.flat.pressed {
   background-color: #00d8ff;
 }
 
