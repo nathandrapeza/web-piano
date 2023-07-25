@@ -1,3 +1,8 @@
+### `Demo`
+Use your keyboard to play piano!
+
+![alt text](https://raw.githubusercontent.com/nathandrapeza/web-piano/main/Piano%20Demo.gif)
+
 ### `npm start`
 
 Runs the app in the development mode.\
