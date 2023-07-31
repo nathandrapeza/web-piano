@@ -1,7 +1,7 @@
 ### `Demo`
 Use your keyboard to play piano!
 
-![alt text](https://raw.githubusercontent.com/nathandrapeza/web-piano/main/Piano%20Demo.gif)
+<img src="https://raw.githubusercontent.com/nathandrapeza/web-piano/main/Piano%20Demo.gif" height="450"/>
 
 ### `npm start`
 
